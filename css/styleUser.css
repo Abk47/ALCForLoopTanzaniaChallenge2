@@ -1,0 +1,87 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size:14px;
+  }
+
+.userProfile {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+
+  .userProfile
+  {
+    margin-left: 240px;
+    height: 100%;
+  }
+
+  .sidebar {
+    list-style-type:none;
+    background-color:#057f94;
+    width:230px;
+    height:100%;
+    top:0;
+    bottom:0;
+    left:0;
+    text-align:left;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition:1s ease;
+  }
+  
+  .sidebar a {
+    text-decoration:none;
+    color:white;
+    transition:1s ease;
+  }
+  
+  .sidebar li {
+    text-indent: 20px;
+    line-height: 40px;
+    transition:0.5s ease;
+  }
+  
+  .sidebar li:hover {
+    background-color:lightseagreen;
+    cursor:pointer;
+    text-indent: 30px;
+  }
+  
+  .sidebar > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+  }
+  
