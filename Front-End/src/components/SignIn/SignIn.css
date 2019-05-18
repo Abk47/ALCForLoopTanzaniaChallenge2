@@ -1,0 +1,129 @@
+.l-col-wrap {
+    display: flex;
+  }
+  .l-col {
+    min-width: 50%;
+    width: 50%;
+    max-width: 50%;
+  }
+  .button {
+    border: 0;
+    font-size: 1em;
+    color: #fff;
+    background-color: rgba(5, 127, 148, 0.88);
+    border-radius: 0.25em;
+    padding: 1em;
+  }
+  .button:hover, .button:focus {
+    background-color: #2dc228;
+  }
+  .form-box {
+    max-width: 50em;
+    background-color: rgba(255, 255, 255, 0.77);
+    border-radius: 0.25em;
+    overflow: hidden;
+    margin: 8em auto 0;
+    box-shadow: 0 0 30px -5px rgba(0, 0, 0, 0.5);
+  }
+  .form-box_form {
+    padding: 2em;
+  }
+  .form-box_content {
+    background-color: #fff;
+    padding: 2em;
+  }
+  .form-box_title {
+    font-weight: 300;
+    font-size: 1.75em;
+    color: #133e40;
+    margin-top: 0;
+  }
+  .form-box_addon {
+    color: #333;
+  }
+  .form_field {
+    width: 100%;
+    font-size: 1em;
+    padding: 1em;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0.25em;
+    margin-bottom: 1em;
+  }
+  .form_field:focus {
+    outline: 0;
+    background-color: #fff;
+    border-color: rgba(12, 114, 136, 0.5);
+  }
+  .form_label {
+    text-transform: uppercase;
+    font-size: 0.8em;
+  }
+  .form_button {
+    width: 100%;
+  }
+  .my-form-text a {
+    color: rgba(5, 127, 148, 0.88);
+  }
+  .my-form-text a:hover, .my-form-text a:focus {
+    color: #c24528;
+  }
+  .my-form-text p + p {
+    margin-top: 1em;
+  }
+  .color-change {
+    color: #057f94;
+  }
+  .color-change-blue{
+    color:blue;
+  }
+
+  /* Sidebar CSS */
+  .sidebar {
+    list-style-type:none;
+    background-color:#057f94;
+    width:230px;
+    height:100%;
+    top:0;
+    bottom:0;
+    left:0;
+    text-align:left;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition:1s ease;
+  }
+  
+  .sidebar button {
+    text-decoration:none;
+    color:white;
+    transition:1s ease;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    text-indent: 20px;
+    line-height: 40px;
+    transition:0.5s ease;
+  }
+  
+  .sidebar li:hover {
+    background-color:lightseagreen;
+    cursor:pointer;
+    text-indent: 30px;
+  }
+  
+  .sidebar > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+  }
+
+  
