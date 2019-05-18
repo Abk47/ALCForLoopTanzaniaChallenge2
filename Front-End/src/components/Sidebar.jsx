@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './SignIn/SignIn.css';
 
 // Functional component for Sidebar
@@ -12,7 +12,7 @@ import './SignIn/SignIn.css';
 //     </ul>
 // );
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
     render() {
         const { foo } = this.props;
         return (
