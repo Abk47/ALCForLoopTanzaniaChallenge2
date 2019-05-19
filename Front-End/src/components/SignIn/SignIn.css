@@ -147,8 +147,9 @@
 }
 
 .user-title {
-  color: grey;
+  color: black;
   font-size: 18px;
+  margin-top:-1em;
 }
 
 .user-button {
@@ -157,20 +158,31 @@
   display: inline-block;
   padding: 8px;
   color: white;
-  background-color: #000;
+  background-color: #057f94;
   text-align: center;
   cursor: pointer;
   width: 100%;
   font-size: 18px;
 }
 
+.user-button:hover,
+.social-link:hover {
+  opacity: 0.7;
+}
+
 .social-link {
   text-decoration: none;
   font-size: 22px;
-  color: black;
+  color: #057f94;
   padding: 5px;
 }
 
 img {
   max-height: 200px;
+  margin-top: 20px;
+}
+
+.full-name{
+  margin-top: -5px;
+  color: black;
 }
