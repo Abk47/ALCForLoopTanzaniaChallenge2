@@ -18,10 +18,10 @@ class Sidebar extends Component {
         return (
             <ul className="sidebar">
                 <li className="sidebar-brand"><button>My Ride Way</button></li>
-                <li><button className="link-button" onClick={foo} >Dashboard</button></li>
-                <li><button className="link-button" onClick={foo} >Support</button></li>
-                <li><button className="link-button" onClick={foo} >About</button></li>
-                <li><button className="link-button" onClick={foo} >Logout</button></li>
+                <li><button className="link-button" onClick={foo} ><i class="fas fa-chalkboard-teacher"></i> Dashboard</button></li>
+                <li><button className="link-button" onClick={foo} ><i class="fas fa-hands-helping"></i> Support</button></li>
+                <li><button className="link-button" onClick={foo} ><i class="fas fa-question"></i> About</button></li>
+                <li><button className="link-button" onClick={foo} ><i class="fas fa-sign-out-alt"></i> Logout</button></li>
             </ul>
         );
     }
