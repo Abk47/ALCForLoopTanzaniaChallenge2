@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 // import SignIn from './components/SignIn/SignIn';
 // import SignUp from './components/SignUp';
+// import UserProfile from './components/UserProfile';
 import Sidebar from './components/Sidebar';
-import UserProfile from './components/UserProfile';
+import Info from './components/Info';
 
 class App extends React.Component {
   render(){
@@ -11,8 +12,9 @@ class App extends React.Component {
     <div className="App">
        {/* <SignUp />  */}
        {/* <SignIn />      */}
+       {/* <UserProfile /> */}
        <Sidebar />
-       <UserProfile />
+       <Info />
     </div>
   );
 }

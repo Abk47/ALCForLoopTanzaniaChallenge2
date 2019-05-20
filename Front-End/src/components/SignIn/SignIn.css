@@ -149,7 +149,7 @@
 .user-title {
   color: black;
   font-size: 18px;
-  margin-top:-1em;
+  margin-top: -1em;
 }
 
 .user-button {
@@ -182,7 +182,10 @@ img {
   margin-top: 20px;
 }
 
-.full-name{
+.full-name {
   margin-top: -5px;
   color: black;
 }
+
+/* Info CSS */
+
