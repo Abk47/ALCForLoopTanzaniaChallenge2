@@ -2,7 +2,7 @@
   "name": "Back-End",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "App.js",
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.0",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.0"
   },
   "devDependencies": {
