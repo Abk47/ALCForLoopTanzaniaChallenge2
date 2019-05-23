@@ -78,8 +78,8 @@ app.get('/rides/:rideId', (req, res, next) => {
   const query = rides.find(doc => doc.id == id);
   // Checking for entries in the array
   if (query) {
-    const rider = {
-      message: 'Ride offer successfully fetched',
+    const offer = {
+      message: 'Ride offer fetched successfully',
       details: {
         name: query.name,
         age: query.age,
@@ -90,16 +90,49 @@ app.get('/rides/:rideId', (req, res, next) => {
         },
       },
     };
-    res.status(200).json(rider);
+    res.status(200).json(offer);
   } else if (!query) {
     res.status(404).json({
-      message: 'No entry found!'
+      message: 'No entry found!',
     });
   } else {
     res.status(500).json({
-      message: 'Query error!'
+      message: 'Query error!',
     });
   }
 });
+
+// Creating a ride offer
+app.post('/rides', (req, res, next) => {
+  const myOffer = {
+    id: req.body.id,
+    name: req.body.name,
+    age: req.body.age,
+    available: req.body.available,
+  };
+
+  if (myOffer.id === rides.id) {        //Needs to be improved
+    res.status(500).json({
+      message: 'Id exists already!'
+    });
+  } else {
+    rides.push(myOffer);
+    next();
+    res.status(200).json({
+      message: 'Ride offer created!',
+      details: {
+        name: myOffer.name,
+        age: myOffer.age,
+        availability: myOffer.available,
+        request: {
+          type: 'GET',
+          url: `${req.protocol}://${req.get('host')}/rides`,
+        },
+      },
+    });
+  }
+
+});
+
 
 module.exports = app;
