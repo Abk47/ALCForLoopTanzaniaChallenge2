@@ -53,7 +53,7 @@ app.get('/rides', (req, res, next) => {
   const response = {
     count: rides.length,
     message: 'List of all available ride offers',
-    drivers: rides.map(ride => ({
+    details: rides.map(ride => ({
       name: ride.name,
       age: ride.age,
       availability: ride.Available,
@@ -111,13 +111,12 @@ app.post('/rides', (req, res, next) => {
     available: req.body.available,
   };
 
-  if (myOffer.id === rides.id) {        //Needs to be improved
+  if (myOffer == rides) {        
     res.status(500).json({
       message: 'Id exists already!'
     });
   } else {
     rides.push(myOffer);
-    next();
     res.status(200).json({
       message: 'Ride offer created!',
       details: {
