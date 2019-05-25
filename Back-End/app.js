@@ -49,7 +49,7 @@ const rides = [{
 ];
 
 // Fetch all rides offers
-app.get('/rides', (req, res, next) => {
+app.get('/api/v1/rides', (req, res, next) => {
   const response = {
     count: rides.length,
     message: 'List of all available ride offers',
@@ -59,7 +59,7 @@ app.get('/rides', (req, res, next) => {
       availability: ride.Available,
       request: {
         type: 'GET',
-        url: `${req.protocol}://${req.get('host')}/rides/${ride.id}`,
+        url: `${req.protocol}://${req.get('host')}/api/v1/rides/${ride.id}`,
       },
     })),
   };
@@ -73,7 +73,7 @@ app.get('/rides', (req, res, next) => {
 });
 
 // Fetch a single ride offer
-app.get('/rides/:rideId', (req, res, next) => {
+app.get('/api/v1/rides/:rideId', (req, res, next) => {
   const id = req.params.rideId;
   const query = rides.find(doc => doc.id == id);
   // Checking for entries in the array
@@ -86,7 +86,7 @@ app.get('/rides/:rideId', (req, res, next) => {
         availability: query.available,
         request: {
           type: 'GET',
-          url: `${req.protocol}://${req.get('host')}/rides`,
+          url: `${req.protocol}://${req.get('host')}/api/v1/rides`,
         },
       },
     };
@@ -103,7 +103,7 @@ app.get('/rides/:rideId', (req, res, next) => {
 });
 
 // Creating a ride offer
-app.post('/rides', (req, res, next) => {
+app.post('/api/v1/rides', (req, res, next) => {
   const myOffer = {
     id: req.body.id,
     name: req.body.name,
@@ -111,9 +111,9 @@ app.post('/rides', (req, res, next) => {
     available: req.body.available,
   };
 
-  if (myOffer == rides) {        
+  if (myOffer == rides) {
     res.status(500).json({
-      message: 'Id exists already!'
+      message: 'Id exists already!',
     });
   } else {
     rides.push(myOffer);
@@ -125,13 +125,17 @@ app.post('/rides', (req, res, next) => {
         availability: myOffer.available,
         request: {
           type: 'GET',
-          url: `${req.protocol}://${req.get('host')}/rides`,
+          url: `${req.protocol}://${req.get('host')}/api/v1/rides`,
         },
       },
     });
   }
-
 });
 
+
+// Making a request to join a ride
+app.post('/api/v1/rides/:rideId/requests', (req, res, next) => {
+  // code here
+});
 
 module.exports = app;
