@@ -4,7 +4,6 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
     "test": "jest"
   },
   "keywords": [],
@@ -22,6 +21,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.0",
-    "jest": "^24.8.0"
+    "jest": "^24.8.0",
+    "supertest": "^4.0.2"
   }
 }
