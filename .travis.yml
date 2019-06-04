@@ -1,6 +1,7 @@
 language: node_js
 node_js:
   - "10" 
-
-  npm start && npm test
+script:
+  - cd backend && npm start && npm test
+  
 
