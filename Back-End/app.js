@@ -189,13 +189,35 @@ app.get('/rides', (req, res) => {
         type: 'GET',
         url: `${req.protocol}://${req.get('host')}/rides/`,
       },
-    }
+    };
     if (error) {
       throw error;
     }
     res.status(200).json(rideDetails);
     pool.end();
   });
+});
+
+// Fetch details of a single ride
+app.get('/rides/:rideId', (req, res) => {
+  const id = req.params.rideId;
+
+  pool.query('SELECT * FROM rides WHERE ride_id = $1', [id], (error, results) => {
+    if (error) {
+      throw error;
+    } else if ((results.rows).length > 0) {
+      res.status(200).json({
+        detail: results.rows,
+        request: {
+          type: 'GET',
+          url: `${req.protocol}://${req.get('host')}/rides/`,
+        },
+      });
+    } else if ((results.rows).length === 0) {
+      res.status(404).json({ message: 'No entry found!' });
+    }
+  });
+
 });
 
 module.exports = app;
