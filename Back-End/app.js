@@ -9,7 +9,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// CORS
+/* CORS */
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -135,7 +135,67 @@ app.post('/api/v1/rides', (req, res, next) => {
 
 // Making a request to join a ride
 app.post('/api/v1/rides/:rideId/requests', (req, res, next) => {
-  // code here
+  // I will write my code here
+});
+
+// Database connection
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: 'postgres',
+  password: 'root',
+  host: 'localhost',
+  port: 5432,
+  database: 'ride-my-way',
+});
+
+pool.connect()
+  .then(() => {
+    console.log('connected to the database');
+  })
+  .catch((err) => {
+    console.log(err);
+    pool.end();
+  });
+
+// This endpoint is to populate database with rides information
+app.post('/rides', (req, res) => {
+  if (!req.body.name || !req.body.age || !req.body.destination || !req.body.status) {
+    return res.status(404).json({ message: 'All fields are required' });
+  }
+  const {
+    name, age, destination, status, created_date = new Date(), modified_date = new Date(),
+  } = req.body;
+
+  pool.query('INSERT INTO rides (name, age, destination, status, created_date, modified_date) VALUES ($1, $2, $3, $4, $5, $6)', [name, age, destination, status, created_date, modified_date], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    console.log(results);
+    res.status(201).send('New ride created!');
+    pool.end();
+  });
+});
+
+
+// Get all rides from the database
+app.get('/rides', (req, res) => {
+  pool.query('SELECT * from rides', (error, results) => {
+    const rideDetails = {
+      count: results.rowCount,
+      message: 'List of all available rides!',
+      details: results.rows,
+      request: {
+        type: 'GET',
+        url: `${req.protocol}://${req.get('host')}/rides/`,
+      },
+    }
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(rideDetails);
+    pool.end();
+  });
 });
 
 module.exports = app;
