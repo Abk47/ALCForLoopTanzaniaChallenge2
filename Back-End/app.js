@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 // Middleware
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -158,7 +161,7 @@ pool.connect()
     pool.end();
   });
 
-// This endpoint is to populate database with rides information
+// This endpoint is to populate database with rides information, It will be deleted later
 app.post('/rides', (req, res) => {
   if (!req.body.name || !req.body.age || !req.body.destination || !req.body.status) {
     return res.status(404).json({ message: 'All fields are required' });
@@ -201,11 +204,11 @@ app.get('/rides', (req, res) => {
 // Fetch details of a single ride
 app.get('/rides/:rideId', (req, res) => {
   const id = req.params.rideId;
-
-  pool.query('SELECT * FROM rides WHERE ride_id = $1', [id], (error, results) => {
+  const queryString = 'SELECT * FROM rides WHERE ride_id = $1';
+  pool.query(queryString, [id], (error, results) => {
     if (error) {
       throw error;
-    } else if ((results.rows).length > 0) {
+    } else if (results.rows.length > 0) {
       res.status(200).json({
         detail: results.rows,
         request: {
@@ -213,11 +216,43 @@ app.get('/rides/:rideId', (req, res) => {
           url: `${req.protocol}://${req.get('host')}/rides/`,
         },
       });
-    } else if ((results.rows).length === 0) {
+    } else if (results.rows.length === 0) {
       res.status(404).json({ message: 'No entry found!' });
     }
   });
-
 });
 
+// registering user api end-point
+app.post('/auth/register', (req, res) => {
+  if (!req.body.fullname || !req.body.email || !req.body.password) {
+    return res.status(400).send({ message: 'All fields are required' });
+  }
+  // Checking if user email exists
+  const queryString = 'SELECT * FROM users WHERE email = $1';
+  pool.query(queryString, [req.body.email])
+    .then((result) => {
+      if (result.rows.length > 0) {
+        return res.status(400).send({ message: 'Email already exists' });
+      }
+      // Hashing the password before saving it in the database
+
+      const saltRounds = 10;
+      bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+        if (err) {
+          return res.status(500).json({
+            error: err,
+          });
+        }
+        const query1 = 'INSERT INTO users (fullname, email, password) VALUES ($1, $2, $3)';
+        const values = [req.body.fullname, req.body.email, hash];
+        pool.query(query1, values, (err, results) => {
+          if (err) {
+            throw err;
+          } res.status(201).send('User successfully added');
+        });
+
+      });
+
+    });
+});
 module.exports = app;
