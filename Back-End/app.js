@@ -247,7 +247,9 @@ app.post('/auth/register', (req, res) => {
         const values = [req.body.fullname, req.body.email, hash];
         pool.query(query1, values, (err, results) => {
           if (err) {
-            throw err;
+            res.status(500).json({
+              error: err,
+            });
           } res.status(201).send('User successfully added');
           pool.end();
         });
@@ -255,9 +257,50 @@ app.post('/auth/register', (req, res) => {
     });
 });
 
-// Login user
+// User login API endpoint
 app.post('/auth/login', (req, res) => {
-
+  const { email, password } = req.body;
+  const queryString = 'SELECT * FROM users WHERE email = $1';
+  const values = [email];
+  pool.query(queryString, values, (err, results) => {
+    if (err)
+    {
+      res.status(500).json({
+        error: err,
+      });
+      // Checking if email exists
+    } else if (results.rows.length < 1) {
+      return res.status(401).json({
+        message: 'Authentication failed',
+      });
+    } else {
+      // Checking if passwords match
+      const dbResult = results.rows[0]; // This is a variable resulting from the query result from the Database
+      bcrypt.compare(password, dbResult.password, (error, result) => {
+        if (error) {
+          return res.status(401).json({
+            message: 'Auth failed',
+          });
+        } if (result) {
+          // Creating Json Web Token
+          const token = jwt.sign({
+            fullname: dbResult.fullname,
+            email: dbResult.email,
+            userId: dbResult.user_id,
+          },
+          'secret',
+          {
+            expiresIn: '1h',
+          },
+          );
+          return res.status(200).json({
+            message: 'Authentication successful',
+            token,
+          });
+        }
+      });
+    }
+  });
 });
 
 module.exports = app;
