@@ -249,10 +249,15 @@ app.post('/auth/register', (req, res) => {
           if (err) {
             throw err;
           } res.status(201).send('User successfully added');
+          pool.end();
         });
-
       });
-
     });
 });
+
+// Login user
+app.post('/auth/login', (req, res) => {
+
+});
+
 module.exports = app;
