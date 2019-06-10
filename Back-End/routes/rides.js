@@ -2,10 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
+const checkAuth = require('../middleware/check-auth');
+
 const RidesController = require('../controllers/RidesController');
 
-router.get('/', RidesController.getAllRides);
+router.get('/', checkAuth, RidesController.getAllRides);
 
-router.get('/:rideId', RidesController.getRide);
+router.get('/:rideId', checkAuth, RidesController.getRide);
 
 module.exports = router;
