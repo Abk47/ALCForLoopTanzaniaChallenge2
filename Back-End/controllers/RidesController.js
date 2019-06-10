@@ -27,7 +27,7 @@ exports.getAllRides = (req, res) => {
       details: results.rows,
       request: {
         type: 'GET',
-        url: `${req.protocol}://${req.get('host')}/rides/`,
+        url: `${req.protocol}://${req.get('host')}/api/v1/rides/`,
       },
     };
     if (error) {
@@ -48,7 +48,7 @@ exports.getRide = (req, res) => {
         detail: results.rows,
         request: {
           type: 'GET',
-          url: `${req.protocol}://${req.get('host')}/rides/`,
+          url: `${req.protocol}://${req.get('host')}/api/v1/rides/`,
         },
       });
     } else if (results.rows.length === 0) {
