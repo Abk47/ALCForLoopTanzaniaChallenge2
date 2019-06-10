@@ -49,7 +49,7 @@ exports.loginUser = (req, res) => {
         error: err,
       });
       // Checking if email exists
-    } else if (results.rows[0].length < 1) {
+    } else if (results.rows.length < 1) {
       return res.status(401).json({
         message: 'Authentication failed',
       });
