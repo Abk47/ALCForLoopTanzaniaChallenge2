@@ -4,9 +4,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-// const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
-
 // Middleware
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,7 +20,6 @@ app.use((req, res, next) => {
   }
   next();
 });
-
 
 // importing routes
 const userRoutes = require('./routes/user');
