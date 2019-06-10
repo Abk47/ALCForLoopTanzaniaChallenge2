@@ -24,19 +24,29 @@ app.use((req, res, next) => {
   next();
 });
 
-// Importing Controllers
-const RidesController = require('./controllers/RidesController');
-const UsersController = require('./controllers/UsersController');
 
-// This endpoint is to populate database with rides information, I AM STILL ADDING NEW FEATURES
-app.post('/rides', RidesController.createRide);
+// importing routes
+const userRoutes = require('./routes/user');
+const rideRoutes = require('./routes/rides');
 
-app.get('/rides', RidesController.getAllRides);
+app.use('/api/v1/rides', rideRoutes);
+app.use('/api/v1/users', userRoutes);
 
-app.get('/rides/:rideId', RidesController.getRide);
+// error handling
+app.use((res, req, next) => {
+  const error = new Error('Not found');
+  res.status = 404;
+  next(error);
+});
 
-app.post('/auth/register', UsersController.registerUser);
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message,
+    },
+  });
+});
 
-app.post('/auth/login', UsersController.loginUser);
 
 module.exports = app;
