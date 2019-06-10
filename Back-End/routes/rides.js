@@ -4,8 +4,8 @@ const router = express.Router();
 
 const RidesController = require('../controllers/RidesController');
 
-router.get('/rides', RidesController.getAllRides);
+router.get('/', RidesController.getAllRides);
 
-router.get('/rides/:rideId', RidesController.getRide);
+router.get('/:rideId', RidesController.getRide);
 
 module.exports = router;
