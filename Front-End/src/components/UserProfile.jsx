@@ -19,7 +19,8 @@ class UserProfile extends Component {
                 <a className="social-link" href="#"><i className="fab fa-twitter-square"></i></a>
                 <a className="social-link" href="#"><i className="fab fa-github-square"></i></a>
                 <a className="social-link" href="#"><i className="fab fa-facebook-square"></i></a>
-                <p><button className="user-button" onClick={this.handleClick}>Click to view list of rides</button></p>
+                <p><button className="user-button" onClick={this.handleClick}>Create a ride offer</button></p>
+                <p><button className="user-button1" onClick={this.handleClick}>Request a ride offer</button></p>
             </div>
         );
     }
