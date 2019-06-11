@@ -1,5 +1,6 @@
 import React from 'react';
 import './SignIn.css';
+import {NavLink} from 'react-router-dom';
 
 const SignIn = () => (
     <div className="form-box l-col-wrap">
@@ -21,7 +22,7 @@ const SignIn = () => (
                 <input name="submit" type="submit" className="form_button button" value="Sign In" />
             </form>
             <small className="form-box_addon my-form-text">
-                Don't have an account? We can fix that <a href="signUp.html">Sign Up</a>
+                Don't have an account? We can fix that <NavLink to='/signUp'>Sign Up</NavLink>
             </small>
         </div>
     </div>
