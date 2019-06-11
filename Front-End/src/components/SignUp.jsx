@@ -1,5 +1,6 @@
 import React from 'react';
 import './SignIn/SignIn.css';
+import {NavLink} from 'react-router-dom';
 
 const SignUp = () => (
   <div className="form-box l-col-wrap">
@@ -13,19 +14,19 @@ const SignUp = () => (
     </div>
     <div className="l-col form-box_form">
       <form id="sign-up" className="form form_sign-up" action="">
+        <label htmlFor="fullName" className="form_label">Full Name</label>
+        <input name="fullName" id="fullName" type="text" className="form_field" placeholder="Enter Your Name" />
+
         <label htmlFor="email" className="form_label">Email Address</label>
         <input name="email" type="email" className="form_field" placeholder="user@youremail.com" />
 
         <label htmlFor="password" className="form_label">Password</label>
         <input name="password" id="password" type="password" className="form_field" placeholder="••••••••••••••••" />
 
-        <label htmlFor="password" className="form_label">Confirm Password</label>
-        <input name="password1" id="password1" type="password" className="form_field" placeholder="••••••••••••••••" />
-
         <input name="submit" type="submit" className="form_button button" value="Sign Up" />
       </form>
       <small className="form-box_addon my-form-text">
-        Already have an account? <a href="signIn.html">Sign In</a>
+        Already have an account? <NavLink to='/'>Sign In</NavLink>
       </small>
     </div>
   </div>
