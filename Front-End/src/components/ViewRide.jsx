@@ -4,6 +4,7 @@ import "react-table/react-table.css";
 
 class ViewRide extends React.Component {
     render() {
+        //Dummy data array that will be replace using api call
         const data = [{
             name: 'Roy Agasthyan',
             age: 26,
