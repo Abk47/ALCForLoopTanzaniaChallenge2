@@ -1,0 +1,105 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+}
+
+.grid-card {
+  /* display: flex;
+
+    padding: 1.5rem; */
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: auto;
+  height: 100%;
+  margin-left: 240px;
+  flex-grow: 1;
+}
+
+.card1 {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  width: 350px;
+  margin: 10px;
+  height: 200px;
+  background: #057f94;
+}
+
+.card-heading {
+  color: white;
+  font-weight: 0.5em;
+  font-size: 1.4rem;
+  padding: 10px;
+  text-align: left;
+  margin-top: -0.35em;
+  margin-left: 0.5em;
+}
+
+.para {
+  color: white;
+  text-align: center;
+  font-size: 5rem;
+  margin-top: -30px;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+}
+
+.ride-request{
+  margin-left:240px;
+  height:200px;
+  width:450px;
+  background-color: #057f94;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.ride-request h3{
+  text-align: center;
+  color:white;
+  margin-top:20px;
+  font-size: 2em
+}
+
+.ride-request p{
+  color:white;
+  text-align: center;
+  margin-top:-10px;
+}
+
+.buttons{
+  text-align: center;
+  margin-top: 35px;
+}
+
+.accept{
+  color:white;
+  background-color: #0085f4;
+  border-color: #0085f4;
+  height:35px;
+  width: 110px;
+  padding:10px;
+  margin-right:10px;
+  cursor: pointer;
+}
+
+.reject{
+  color:white;
+  background-color: #fe2c1b;
+  border-color: #fe2c1b;
+  width: 110px;
+  height:35px;
+  padding:10px;
+  margin-left:10px;
+  cursor: pointer;
+}
