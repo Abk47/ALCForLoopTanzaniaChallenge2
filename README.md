@@ -6,7 +6,7 @@ Ride-My-Way app is a carpooling application that provides drivers with the abili
 This project was made possible by ALCWithFoorLoop
 
 # Functionality of the Web Application
-* User Authentication ( Signup & Signin )
+* User Authentication ( Sign Up & Sign In )
 
 * User can do the following:
   * View all available ride offers.
