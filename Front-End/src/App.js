@@ -5,10 +5,9 @@ import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile';
 import Sidebar from './components/Sidebar';
-// import RideOffer from './components/RideOffer';
 import Info from './components/Info';
 import ViewRide from './components/ViewRide';
-
+// import Error404 from './components/Error404';
 
 function App() {
   return (
@@ -22,10 +21,9 @@ function App() {
         <Route exact path="/rides" component={Sidebar} />
         <Route exact path="/rides" component={ViewRide} />
         <Route path="/signUp" component={SignUp} />
-        {/* <Route component={error404} /> */}
+        {/* <Route component={Error404} /> */}
       </Switch>
     </React.Fragment>
-
   );
 }
 
