@@ -1,10 +1,12 @@
+<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>    <a href="https://codeclimate.com/github/codeclimate/codeclimate/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage" /></a> [![Status](https://travis-ci.org/Abk47/ride-my-way.svg?branch=feature)](https://travis-ci.org/Abk47/ride-my-way)
+
 # Ride-my-way
 Ride-My-Way app is a carpooling application that provides drivers with the ability to create ride offers and passengers to join available ride offers.
 
 This project was made possible by ALCWithFoorLoop
 
 # Functionality of the Web Application
-* User Authentication ( Signup & Signin )
+* User Authentication ( Sign Up & Sign In )
 
 * User can do the following:
   * View all available ride offers.
